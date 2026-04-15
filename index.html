@@ -8,9 +8,12 @@
 
 <body>
 
+<!-- PARTICLES -->
+<div id="particles"></div>
+
 <header>
-  <img src="logo.gif" class="logo" alt="logo">
-  <h1>FxForge</h1>
+  <img src="logo.gif" class="logo">
+  <h1>FXFORGE</h1>
   <p class="subtitle">Editshop</p>
 </header>
 
@@ -38,6 +41,21 @@
   </div>
 
 </section>
+
+<script>
+const container = document.getElementById("particles");
+
+for (let i = 0; i < 60; i++) {
+  const p = document.createElement("div");
+  p.classList.add("particle");
+
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.animationDuration = (5 + Math.random() * 10) + "s";
+  p.style.opacity = Math.random();
+
+  container.appendChild(p);
+}
+</script>
 
 </body>
 </html>
