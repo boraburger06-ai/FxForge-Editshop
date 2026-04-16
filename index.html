@@ -4,11 +4,15 @@
   <meta charset="UTF-8">
   <title>FxForge | Editshop</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" href="favicon.ico">
 </head>
 
 <body>
 
+<!-- SOUND -->
+<audio id="hoverSound" src="hover.mp3" preload="auto"></audio>
+
+<!-- PARTICLES -->
 <div id="particles"></div>
 
 <header>
@@ -19,7 +23,6 @@
 
 <section class="products">
 
-  <!-- Thumbnail -->
   <div class="card">
     <h2>Thumbnail</h2>
     <p>Custom YouTube thumbnail</p>
@@ -27,8 +30,11 @@
     <button class="disabled">Coming Soon</button>
   </div>
 
-  <!-- BASIC (MAIN PRODUCT) -->
+  <!-- 🔥 MAIN CARD -->
   <div class="card basic">
+
+    <div class="badge">MOST POPULAR</div>
+
     <h2>Basic Montage</h2>
     <p>0–14 clips</p>
     <p class="price">€3.50</p>
@@ -40,7 +46,6 @@
     </a>
   </div>
 
-  <!-- PRO -->
   <div class="card">
     <h2>Pro Montage</h2>
     <p>8–20 clips + thumbnail</p>
@@ -48,7 +53,6 @@
     <button class="disabled">Coming Soon</button>
   </div>
 
-  <!-- ULTRA -->
   <div class="card">
     <h2>Ultra Montage</h2>
     <p>15–25 clips + cinematic</p>
@@ -59,9 +63,10 @@
 </section>
 
 <script>
+/* PARTICLES */
 const container = document.getElementById("particles");
 
-for (let i = 0; i < 70; i++) {
+for (let i = 0; i < 80; i++) {
   const p = document.createElement("div");
   p.classList.add("particle");
 
@@ -71,6 +76,16 @@ for (let i = 0; i < 70; i++) {
 
   container.appendChild(p);
 }
+
+/* HOVER SOUND */
+const sound = document.getElementById("hoverSound");
+
+document.querySelectorAll("button, .buy-btn").forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    sound.currentTime = 0;
+    sound.play();
+  });
+});
 </script>
 
 </body>
