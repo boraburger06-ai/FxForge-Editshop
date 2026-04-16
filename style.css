@@ -1,10 +1,20 @@
 body {
   margin: 0;
   font-family: Arial;
-  background: radial-gradient(circle at top, #1a0033, #0a0014);
   color: white;
   text-align: center;
   overflow-x: hidden;
+
+  background: linear-gradient(-45deg, #0a0014, #1a0033, #240046, #3c096c);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+/* 🌌 MOVING BACKGROUND */
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  50% { background-position: 100% }
+  100% { background-position: 0% }
 }
 
 /* PARTICLES */
@@ -43,18 +53,18 @@ header {
 }
 
 .logo {
-  width: 220px;
+  width: 200px;
   filter: drop-shadow(0 0 30px #a855f7);
 }
 
 h1 {
-  font-size: 55px;
+  font-size: 50px;
   color: #c77dff;
-  text-shadow: 0 0 25px #7b2cbf;
+  text-shadow: 0 0 30px #7b2cbf;
 }
 
 .subtitle {
-  color: #aaa;
+  color: #bbb;
 }
 
 /* CARDS */
@@ -67,27 +77,47 @@ h1 {
 }
 
 .card {
-  background: rgba(20, 0, 34, 0.9);
+  position: relative;
+  background: rgba(20, 0, 34, 0.8);
+  backdrop-filter: blur(10px);
   border: 1px solid #7b2cbf;
   padding: 20px;
   width: 260px;
-  border-radius: 14px;
+  border-radius: 16px;
   transition: 0.3s;
 }
 
 .card:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 40px #a855f7;
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 50px #a855f7;
 }
 
-/* 🔥 BASIC SPECIAL GLOW */
+/* 🔥 BASIC SPECIAL */
 .card.basic {
   border: 2px solid #c77dff;
-  box-shadow: 0 0 25px #a855f7;
-  transform: scale(1.05);
+  box-shadow: 0 0 30px #a855f7;
+  transform: scale(1.08);
 }
 
-/* PRICE */
+/* 💎 BADGE */
+.badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: linear-gradient(45deg, #c77dff, #7b2cbf);
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px #c77dff;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
 .price {
   color: #c77dff;
   font-size: 20px;
@@ -99,29 +129,51 @@ button,
   display: inline-block;
   margin-top: 10px;
   background: linear-gradient(45deg, #7b2cbf, #c77dff);
-  border: none;
   padding: 10px 20px;
   color: white;
   border-radius: 8px;
-  cursor: pointer;
   text-decoration: none;
+  border: none;
+  cursor: pointer;
   transition: 0.3s;
 }
 
 button:hover,
 .buy-btn:hover {
-  transform: scale(1.12);
-  box-shadow: 0 0 20px #c77dff;
+  transform: scale(1.15);
+  box-shadow: 0 0 25px #c77dff;
 }
 
-/* DISABLED BUTTON */
+/* DISABLED */
 .disabled {
   background: #555;
-  cursor: not-allowed;
   opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .disabled:hover {
   transform: none;
   box-shadow: none;
+}
+
+/* 📱 MOBILE FIX */
+@media (max-width: 600px) {
+
+  h1 {
+    font-size: 35px;
+  }
+
+  .products {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .card.basic {
+    transform: none;
+  }
 }
